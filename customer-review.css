@@ -167,8 +167,8 @@ width: var(--nav-width, 0);
   header {
     background-color: #111F3C;
     padding: 20px;
-    border-bottom-right-radius: 40px;
-    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
   }
 }
 
