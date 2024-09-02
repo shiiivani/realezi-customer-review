@@ -66,8 +66,6 @@
               <div class="review-container diag_slides">
                 <div class="diag_slides_lines">
                   <div class="diag_slides_line odd">
-
-
                     <div class="review-card">
                       <div class="review-header">
                         <img src="images/users/img5.png" alt="User Image">
@@ -1045,8 +1043,8 @@
           impact your business?</h4>
       </div>
       <div class="container mt-5" id="hanging-icons">
-
-        <div class="row main-cards">
+        <button id="prev-btn" class="nav-btn prev-btn"><img src="./images/right-arrow-white.png" width="18px"></button>
+        <div class=" main-cards">
           <div class="col-sm-12 col-md-6 col-lg-4 mt-4 col-12 d-flex align-items-start c_mt_10">
             <div class="card-div">
               <h3 class="">SaaS</h3>
@@ -1064,9 +1062,6 @@
                 </svg>
               </span>
             </div>
-
-
-
           </div>
           <div class="col-sm-12 col-md-6 col-lg-4 mt-4 col-12  d-flex align-items-start c_mt_10">
             <div class="card-div">
@@ -1161,13 +1156,11 @@
             </div>
           </div>
         </div>
-
-        <div class="show_more">
+        <button id="next-btn" class="nav-btn next-btn"><img src="./images/right-arrow-white.png" width="18px"></button>
+        <!-- <div class="show_more">
           <a href="">See All Stories</a>
-        </div>
+        </div> -->
       </div>
-
-
     </section>
   </main>
 
@@ -1194,7 +1187,7 @@
                 <canvas id="partyPopper"></canvas>
               </button>
             </ul>
-            <div class="playStore-btn d-flex align-items-center">
+            <div class="playStore-btn d-flex align-items-center justify-content-between">
               <a href="#" class="googlePlay-button">
                 <span class="icon">
                   <svg fill="currentcolor" viewBox="-52.01 0 560.035 560.035" xmlns="http://www.w3.org/2000/svg"
@@ -1315,7 +1308,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script defer src="./navbar.js"></script>
   <script defer src="./rive-animations.js"></script>
-  <script>
+  <!-- <script>
     $(window).on('scroll', function () {
       var scrollTop = $(this).scrollTop();
       $('.odd').css('transform', 'translateX(' + (scrollTop / 10) + 'px)');
@@ -1331,6 +1324,96 @@
 
         $('.card_body').removeClass('active');
         $('.' + tab_id).addClass('active');
+      });
+    });
+  </script> -->
+  <script>
+    $(document).ready(function () {
+      let startX;
+      let isSwiping = false;
+
+      function attachTouchEvents() {
+        if ($(window).width() < 560) {
+          $('.diag_slides_line').each(function () {
+            let $container = $(this);
+            let initialTranslateX = 0;
+
+            $container.on('touchstart', function (e) {
+              isSwiping = true;
+              startX = e.originalEvent.touches[0].pageX;
+              e.preventDefault();
+            });
+
+            $container.on('touchmove', function (e) {
+              if (!isSwiping) return;
+
+              let currentX = e.originalEvent.touches[0].pageX;
+              let deltaX = currentX - startX;
+
+              $container.css('transform', 'translateX(' + (initialTranslateX + deltaX) + 'px)');
+            });
+
+            $container.on('touchend', function () {
+              isSwiping = false;
+              let matrix = $container.css('transform').replace(/[^0-9\-.,]/g, '').split(',');
+              initialTranslateX = parseInt(matrix[4]) || 0;
+            });
+          });
+        }
+      }
+
+      attachTouchEvents();
+
+      $(window).resize(function () {
+        if ($(window).width() >= 560) {
+          $('.diag_slides_line').off('touchstart touchmove touchend');
+        } else {
+          attachTouchEvents();
+        }
+      });
+
+      $(window).on('scroll', function () {
+        var scrollTop = $(this).scrollTop();
+        $('.odd').css('transform', 'translateX(' + (scrollTop / 10) + 'px)');
+        $('.even').css('transform', 'translateX(' + -(scrollTop / 10) + 'px)');
+      });
+
+      $('.tab_header span').click(function () {
+        var tab_id = $(this).data('tab');
+
+        $('.tab_header span').removeClass('tab_active');
+        $(this).addClass('tab_active');
+
+        $('.card_body').removeClass('active');
+        $('.' + tab_id).addClass('active');
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.querySelector(".main-cards");
+      const prevBtn = document.querySelector(".prev-btn");
+      const nextBtn = document.querySelector(".next-btn");
+
+      let index = 0; // To keep track of the current slide
+      const cards = container.querySelectorAll('.card-div');
+      const cardWidth = cards[0].offsetWidth; // Assumes all cards have the same width
+
+      const updateSlider = () => {
+        container.style.transform = `translateX(-${index * 100}%)`;
+      };
+
+      prevBtn.addEventListener("click", () => {
+        if (index > 0) {
+          index--;
+          updateSlider();
+        }
+      });
+
+      nextBtn.addEventListener("click", () => {
+        if (index < cards.length - 1) {
+          index++;
+          updateSlider();
+        }
       });
     });
 
