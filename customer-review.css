@@ -189,8 +189,8 @@ width: var(--nav-width, 0);
   text-align: center;
   backdrop-filter: blur(5px);
   transition: top 0.5s ease;
-  border-bottom-right-radius: 40px;
-  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
 
 .mobile-view-nav.active {
