@@ -334,7 +334,13 @@ width: var(--nav-width, 0);
 
 @media screen and (max-width: 560px) {
   .section-review h1 {
-    font-size: 2.2rem !important;
+    font-size: 2rem !important;
+  }
+}
+
+@media screen and (max-width: 455px) {
+  .section-review h1 {
+    font-size: 1.8rem !important;
   }
 }
 
