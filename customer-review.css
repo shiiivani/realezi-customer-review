@@ -1357,6 +1357,14 @@ p {
 }
 
 @media screen and (max-width: 560px) {
+  .footer .columns > div:first-child {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
   .footer .upper-footer .px-5 {
     padding: 0 !important;
   }
