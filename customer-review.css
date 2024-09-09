@@ -965,14 +965,16 @@ p {
 }
 
 /* Footer */
+
+/* Footer */
 .footer {
   color: #ffffff;
   background-color: #111f3c;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
   position: relative;
-  bottom: 50px;
-  padding-top: 60px;
+  margin-top: -50px;
+  padding: 55px 10px 20px 10px;
 }
 
 .footer .upper-footer ul {
@@ -1091,6 +1093,19 @@ p {
   position: absolute;
   right: 20px;
   bottom: 10px;
+}
+
+.playStore-btn .texts .launch-text {
+  font-size: 1rem;
+  white-space: wrap;
+  margin-right: 10px;
+}
+
+.playStore-btn .texts .soon-text {
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  margin-left: 15px;
 }
 
 .googlePlay-button {
@@ -1293,16 +1308,13 @@ p {
 .lower-footer p {
   font-size: 0.9rem;
 }
-
 @media screen and (max-width: 1200px) {
   .footer .columns div:first-child img {
     margin-top: 30px;
   }
-
   .footer .upper-footer .columns {
     flex-wrap: wrap;
   }
-
   .footer .upper-footer .columns h4 {
     margin-top: 30px;
   }
@@ -1335,7 +1347,6 @@ p {
   .footer .lower-bottom {
     flex-direction: column;
   }
-
   .footer .lower-bottom p {
     margin-bottom: 20px !important;
   }
@@ -1358,12 +1369,7 @@ p {
 
 @media screen and (max-width: 560px) {
   .footer .columns > div:first-child {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    display: none;
   }
   .footer .upper-footer .px-5 {
     padding: 0 !important;
