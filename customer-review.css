@@ -973,8 +973,9 @@ p {
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
   position: relative;
-  margin-top: -50px;
   padding: 55px 10px 20px 10px;
+  position: relative;
+  margin-top: -50px;
 }
 
 .footer .upper-footer ul {
@@ -1308,6 +1309,7 @@ p {
 .lower-footer p {
   font-size: 0.9rem;
 }
+
 @media screen and (max-width: 1200px) {
   .footer .columns div:first-child img {
     margin-top: 30px;
@@ -1364,25 +1366,45 @@ p {
   }
   .footer .lower-footer .lower-upper ul {
     margin: 15px 0 !important;
+    flex-direction: column;
+  }
+  .footer .lower-footer .lower-upper ul li {
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .footer .lower-bottom {
+    flex-direction: column;
+  }
+  .footer .lower-bottom p {
+    margin-bottom: 20px !important;
   }
 }
 
 @media screen and (max-width: 560px) {
-  .footer .columns > div:first-child {
-    display: none;
-  }
-  .footer .upper-footer .px-5 {
-    padding: 0 !important;
-  }
-  .footer .upper-footer .d-flex:last-child .image-container {
-    justify-content: center !important;
-  }
-  .footer .upper-footer .d-flex:last-child h5 {
-    margin-top: 20px;
+  .footer {
+    padding-top: 20px;
   }
   .footer .playStore-btn {
     position: static;
-    margin-top: 30px;
+  }
+  .footer .columns > div:first-child,
+  .playStore-btn.larger-screen,
+  .upper-footer .columns > div:nth-child(5) {
+    display: none !important;
+  }
+  /* .footer .upper-footer .px-5 {
+    padding: 0 !important;
+  } */
+  .footer .upper-footer .columns > div {
+    width: 100%;
+  }
+
+  .footer .upper-footer .columns > div:nth-child(2) ul > div {
+    position: absolute;
+    right: 0px;
+    left: 0px;
   }
   .upper-footer .columns div:nth-child(3) .d-flex {
     flex-direction: column;
@@ -1393,14 +1415,22 @@ p {
   .upper-footer .columns {
     margin-bottom: 0 !important;
   }
+  .upper-footer .columns div:nth-child(4) {
+    margin-top: 50px;
+  }
+  .upper-footer .columns div:nth-child(4) .d-flex {
+    justify-content: space-between;
+  }
   .lower-footer .lower-upper {
     padding-top: 0 !important;
   }
 }
 
-@media screen and (max-width: 510px) {
-  .footer .upper-footer div {
-    width: 100%;
+@media screen and (min-width: 560px) {
+  .upper-footer .mobile-view-list,
+  .playStore-btn.smaller-screen,
+  .smaller-screen-refer-button {
+    display: none !important;
   }
 }
 
